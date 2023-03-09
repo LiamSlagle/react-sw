@@ -4,12 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import store from './state/store';
-import App from './App';
+import Search from './pages/Search';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Search />,
   },
 ]);
 
