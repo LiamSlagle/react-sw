@@ -1,7 +1,7 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
-interface Film {
+export interface Film {
   episodeId: number;
   title: string;
   openingCrawl: string;
@@ -24,6 +24,7 @@ const filmsSlice = createSlice({
   },
 });
 
+// Destructure selectAll so we can import directly later
 export const { selectAll: selectFilms } = filmsAdapter.getSelectors<RootState>(
   (state) => state.films,
 );

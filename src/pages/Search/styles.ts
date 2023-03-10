@@ -1,6 +1,8 @@
 import { Theme } from '@mui/material/styles';
 
 export default {
+  /* Containers */
+
   pageContainer: (theme: Theme) => ({
     marginTop: theme.spacing(2),
   }),
@@ -31,6 +33,8 @@ export default {
     },
   }),
 
+  /* Text */
+
   welcomeText: (theme: Theme) => ({
     ...theme.typography.h4,
     margin: `0 0 ${theme.spacing(2)} 0`,
@@ -44,6 +48,8 @@ export default {
   resultsPendingText: (theme: Theme) => ({
     margin: `${theme.spacing(2)} 0`,
   }),
+
+  /* Components */
 
   searchBar: (theme: Theme) => ({
     width: '100%',
