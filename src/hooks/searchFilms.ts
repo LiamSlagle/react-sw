@@ -29,7 +29,7 @@ const useSearchFilms: SearchFilmsHook = () => {
     async (params: SearchFilmsParams) => {
       setError(false);
 
-      const response = await fetch(PATH, { method: `GET${params.query}` });
+      const response = await fetch(PATH + params.query, { method: 'GET' });
 
       if (!response.ok) {
         setError(true);

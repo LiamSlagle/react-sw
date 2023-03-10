@@ -4,11 +4,15 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import styles from './styles';
 
-const SearchButton: React.FC = () => {
+interface PropTypes {
+  onClick: () => void;
+}
+
+const SearchButton: React.FC<PropTypes> = ({ onClick }) => {
   const theme = useTheme();
 
   return (
-    <Button sx={styles.button(theme)}>
+    <Button sx={styles.button(theme)} onClick={onClick}>
       <SearchIcon sx={styles.icon} />
     </Button>
   );

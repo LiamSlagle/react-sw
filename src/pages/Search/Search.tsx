@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   Container,
   Grid,
@@ -8,12 +8,20 @@ import {
   useTheme,
 } from '@mui/material';
 
+import useSearchFilms from 'hooks/searchFilms';
+
 import Logo from 'components/Logo';
 import SearchButton from 'components/SearchButton';
 import styles from './styles';
 
 const Search: React.FC = () => {
   const theme = useTheme();
+
+  const [searchFilms, searchFilmsError] = useSearchFilms();
+
+  const handleSearch = useCallback(async () => {
+    await searchFilms({ query: 'attack' });
+  }, []);
 
   return (
     <>
@@ -35,7 +43,7 @@ const Search: React.FC = () => {
                 color="primary"
                 sx={styles.searchBar(theme)}
               />
-              <SearchButton />
+              <SearchButton onClick={handleSearch} />
             </Stack>
           </Grid>
           <Grid item xs={12} sm={12} md={7} sx={styles.resultsContainer(theme)}>

@@ -2,16 +2,24 @@ import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
 export interface Film {
-  episodeId: number;
+  episode_id: number;
   title: string;
-  openingCrawl: string;
+  opening_crawl: number;
   director: string;
   producer: string;
-  releaseDate: Date;
+  release_date: Date;
+  species: string[];
+  starships: string[];
+  vehicles: string[];
+  characters: string[];
+  planets: string[];
+  url: string;
+  created: string;
+  edited: string;
 }
 
 const filmsAdapter = createEntityAdapter<Film>({
-  selectId: (film) => film.episodeId,
+  selectId: (film) => film.episode_id,
   sortComparer: (a, b) => a.title.localeCompare(b.title),
 });
 
