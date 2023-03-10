@@ -8,9 +8,11 @@ const theme = createTheme({
       light: '#ffe81f',
       dark: '#ffe81f',
     },
+    secondary: {
+      main: 'rgba(255, 255, 255, 0.23)',
+    },
     text: {
       primary: '#ffe81f',
-      secondary: '#ffe81f',
     },
   },
   components: {
