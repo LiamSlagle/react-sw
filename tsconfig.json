@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
+    "baseUrl": "./src",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "jsx": "react",
     "allowJs": true,
