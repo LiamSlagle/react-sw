@@ -1,7 +1,15 @@
 import React from 'react';
-import { Container, Grid, Box, TextField, useTheme } from '@mui/material';
+import {
+  Container,
+  Grid,
+  Stack,
+  Box,
+  TextField,
+  useTheme,
+} from '@mui/material';
 
 import Logo from 'components/Logo';
+import SearchButton from 'components/SearchButton';
 import styles from './styles';
 
 const Search: React.FC = () => {
@@ -19,13 +27,16 @@ const Search: React.FC = () => {
                 Search for a Star Wars film by title below
               </p>
             </Box>
-            <TextField
-              id="movie-search"
-              label="Search for a Star Wars film"
-              variant="outlined"
-              color="primary"
-              sx={styles.searchBar(theme)}
-            />
+            <Stack spacing={1} direction="row">
+              <TextField
+                id="movie-search"
+                label="Search for a Star Wars film"
+                variant="outlined"
+                color="primary"
+                sx={styles.searchBar(theme)}
+              />
+              <SearchButton />
+            </Stack>
           </Grid>
           <Grid item xs={12} sm={12} md={7} sx={styles.resultsContainer(theme)}>
             <p style={styles.resultsPendingText(theme)}>
