@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   Container,
   Grid,
@@ -17,11 +17,15 @@ import styles from './styles';
 const Search: React.FC = () => {
   const theme = useTheme();
 
-  const [searchFilms, searchFilmsError] = useSearchFilms();
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [searchFilms] = useSearchFilms();
+
+  const onSearchValueChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+    setSearchValue(e.target.value);
 
   const handleSearch = useCallback(async () => {
-    await searchFilms({ query: 'attack' });
-  }, []);
+    await searchFilms({ query: searchValue });
+  }, [searchValue]);
 
   return (
     <>
@@ -41,6 +45,8 @@ const Search: React.FC = () => {
                 label="Search for a Star Wars film"
                 variant="outlined"
                 color="primary"
+                value={searchValue}
+                onChange={onSearchValueChange}
                 sx={styles.searchBar(theme)}
               />
               <SearchButton onClick={handleSearch} />
