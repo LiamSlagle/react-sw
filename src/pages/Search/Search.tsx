@@ -24,6 +24,13 @@ const Search: React.FC = () => {
   const onSearchValueChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setSearchValue(e.target.value);
 
+  const onKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // Simple solution to create 'form submission' effect for the user
+    // without bringing in form libraries or dealing with generically typed
+    // React event handlers
+    if (e.key === 'Enter') handleSearch();
+  };
+
   const handleSearch = useCallback(async () => {
     await searchFilms({ query: searchValue });
   }, [searchValue]);
@@ -48,6 +55,7 @@ const Search: React.FC = () => {
                 color="primary"
                 value={searchValue}
                 onChange={onSearchValueChange}
+                onKeyPress={(e) => onKeyPress(e)}
                 sx={styles.searchBar(theme)}
               />
               <Button sx={styles.searchButton(theme)} onClick={handleSearch}>
