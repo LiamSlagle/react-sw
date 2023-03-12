@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { Film, mergeFilms } from 'state/films';
+import { Film, mergeFilms, resetFilms } from 'state/films';
 
 const PATH = 'https://swapi.dev/api/films/?search=';
 
@@ -29,6 +29,7 @@ const useSearchFilms: SearchFilmsHook = () => {
 
   const searchFilms = useCallback(
     async (params: SearchFilmsParams) => {
+      dispatch(resetFilms());
       setError(false);
       setLoading(true);
 

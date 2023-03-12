@@ -25,6 +25,7 @@ export default {
     [theme.breakpoints.down('md')]: {
       borderTop: 1,
       textAlign: 'center',
+      paddingTop: theme.spacing(4),
       marginTop: theme.spacing(4),
     },
     [theme.breakpoints.up('md')]: {
@@ -43,10 +44,6 @@ export default {
   helpText: (theme: Theme) => ({
     ...theme.typography.subtitle1,
     margin: `0 0 ${theme.spacing(2)} 0`,
-  }),
-
-  resultsPendingText: (theme: Theme) => ({
-    margin: `${theme.spacing(2)} 0`,
   }),
 
   /* Components */

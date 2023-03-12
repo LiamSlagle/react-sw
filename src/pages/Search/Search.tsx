@@ -5,7 +5,9 @@ import {
   Grid,
   Stack,
   Box,
+  Typography,
   TextField,
+  CircularProgress,
   useTheme,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
@@ -15,6 +17,7 @@ import useSearchFilms from 'hooks/searchFilms';
 
 import Logo from 'components/Logo';
 import Button from 'components/Button';
+import Results from './Results';
 import styles from './styles';
 
 const Search: React.FC = () => {
@@ -46,10 +49,10 @@ const Search: React.FC = () => {
         <Grid container>
           <Grid item xs={12} sm={12} md={5} sx={styles.searchContainer(theme)}>
             <Box>
-              <p style={styles.welcomeText(theme)}>Welcome</p>
-              <p style={styles.helpText(theme)}>
+              <Typography sx={styles.welcomeText(theme)}>Welcome</Typography>
+              <Typography sx={styles.helpText(theme)}>
                 Search for a Star Wars film by title below
-              </p>
+              </Typography>
             </Box>
             <Stack spacing={1} direction="row">
               <TextField
@@ -68,11 +71,13 @@ const Search: React.FC = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} sm={12} md={7} sx={styles.resultsContainer(theme)}>
-            {searchFilmsLoading || films.length < 1 ? (
-              <p style={styles.resultsPendingText(theme)}>
-                Results will appear here
-              </p>
-            ) : null}
+            {!searchFilmsLoading && films.length < 1 ? (
+              <Typography>Results will appear here</Typography>
+            ) : searchFilmsLoading && films.length < 1 ? (
+              <CircularProgress />
+            ) : (
+              <Results films={films} />
+            )}
           </Grid>
         </Grid>
       </Container>
