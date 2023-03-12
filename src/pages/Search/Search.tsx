@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Container,
   Grid,
@@ -9,6 +10,7 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
+import { selectFilms } from 'state/films';
 import useSearchFilms from 'hooks/searchFilms';
 
 import Logo from 'components/Logo';
@@ -18,8 +20,10 @@ import styles from './styles';
 const Search: React.FC = () => {
   const theme = useTheme();
 
+  const films = useSelector(selectFilms);
+
   const [searchValue, setSearchValue] = useState<string>('');
-  const [searchFilms] = useSearchFilms();
+  const [searchFilms, searchFilmsLoading] = useSearchFilms();
 
   const onSearchValueChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setSearchValue(e.target.value);
@@ -64,9 +68,11 @@ const Search: React.FC = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} sm={12} md={7} sx={styles.resultsContainer(theme)}>
-            <p style={styles.resultsPendingText(theme)}>
-              Results will appear here
-            </p>
+            {searchFilmsLoading || films.length < 1 ? (
+              <p style={styles.resultsPendingText(theme)}>
+                Results will appear here
+              </p>
+            ) : null}
           </Grid>
         </Grid>
       </Container>

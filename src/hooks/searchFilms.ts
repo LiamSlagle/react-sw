@@ -19,15 +19,18 @@ export class SearchFilmsError extends Error {}
 type SearchFilmsHook = () => [
   (params: SearchFilmsParams) => Promise<SearchFilmsResult>,
   boolean,
+  boolean,
 ];
 
 const useSearchFilms: SearchFilmsHook = () => {
   const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   const searchFilms = useCallback(
     async (params: SearchFilmsParams) => {
       setError(false);
+      setLoading(true);
 
       const response = await fetch(PATH + params.query, { method: 'GET' });
 
@@ -38,13 +41,14 @@ const useSearchFilms: SearchFilmsHook = () => {
 
       const result = (await response.json()) as SearchFilmsResult;
       dispatch(mergeFilms(result.results));
+      setLoading(false);
 
       return result;
     },
     [dispatch],
   );
 
-  return [searchFilms, error];
+  return [searchFilms, loading, error];
 };
 
 export default useSearchFilms;
