@@ -7,11 +7,12 @@ import {
   TextField,
   useTheme,
 } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 import useSearchFilms from 'hooks/searchFilms';
 
 import Logo from 'components/Logo';
-import SearchButton from 'components/SearchButton';
+import Button from 'components/Button';
 import styles from './styles';
 
 const Search: React.FC = () => {
@@ -49,7 +50,9 @@ const Search: React.FC = () => {
                 onChange={onSearchValueChange}
                 sx={styles.searchBar(theme)}
               />
-              <SearchButton onClick={handleSearch} />
+              <Button sx={styles.searchButton(theme)} onClick={handleSearch}>
+                <SearchIcon sx={styles.searchIcon} />
+              </Button>
             </Stack>
           </Grid>
           <Grid item xs={12} sm={12} md={7} sx={styles.resultsContainer(theme)}>

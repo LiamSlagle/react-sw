@@ -56,4 +56,13 @@ export default {
     maxWidth: theme.spacing(64),
     color: theme.palette.text.primary,
   }),
+
+  searchButton: (theme: Theme) => ({
+    backgroundColor: theme.palette.primary.main,
+  }),
+
+  searchIcon: (theme: Theme) => ({
+    color: theme.palette.background.default,
+    fontSize: theme.typography.h5.fontSize,
+  }),
 };
