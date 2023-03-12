@@ -13,7 +13,11 @@ const Results: React.FC<PropTypes> = ({ films }) => {
     <>
       <Stack spacing={2}>
         {films.map((film) => (
-          <ActionCard key={film.episode_id} title={film.title} />
+          <ActionCard
+            key={film.episode_id}
+            title={film.title}
+            subtitle={new Date(film.release_date).getFullYear().toString()}
+          />
         ))}
       </Stack>
     </>

@@ -10,9 +10,10 @@ import styles from './styles';
 
 interface PropTypes {
   title: string;
+  subtitle?: string;
 }
 
-const ActionCard: React.FC<PropTypes> = ({ title }) => {
+const ActionCard: React.FC<PropTypes> = ({ title, subtitle }) => {
   const theme = useTheme();
 
   return (
@@ -22,9 +23,11 @@ const ActionCard: React.FC<PropTypes> = ({ title }) => {
           <Typography variant="h5" component="div">
             {title}
           </Typography>
-          <Typography component="div" sx={styles.subtitle(theme)}>
-            1977
-          </Typography>
+          {subtitle && (
+            <Typography component="div" sx={styles.subtitle(theme)}>
+              {subtitle}
+            </Typography>
+          )}
         </CardContent>
       </CardActionArea>
     </Card>
