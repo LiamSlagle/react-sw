@@ -8,11 +8,16 @@ import { CssBaseline } from '@mui/material';
 import store from './state/store';
 import theme from './theme/theme';
 import Search from './pages/Search';
+import FilmDetails from './pages/FilmDetails';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Search />,
+  },
+  {
+    path: '/film-details/:filmId',
+    element: <FilmDetails />,
   },
 ]);
 

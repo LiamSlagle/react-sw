@@ -62,4 +62,8 @@ export default {
     color: theme.palette.background.default,
     fontSize: theme.typography.h5.fontSize,
   }),
+
+  link: {
+    textDecoration: 'none',
+  },
 };
