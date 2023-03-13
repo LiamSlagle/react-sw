@@ -14,7 +14,7 @@ export const ROMAN_NUMS: { [key: number]: string } = {
 export interface Film {
   episode_id: number;
   title: string;
-  opening_crawl: number;
+  opening_crawl: string;
   director: string;
   producer: string;
   release_date: string;

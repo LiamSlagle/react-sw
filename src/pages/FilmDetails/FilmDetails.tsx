@@ -78,9 +78,18 @@ const FilmDetails: React.FC = () => {
               <Typography sx={styles.detail(theme)}>{film.producer}</Typography>
             </Grid>
 
+            <Grid item xs={12} sm={3} mb={2}>
+              <Typography sx={styles.detailTitle(theme)}>
+                Appears in:
+              </Typography>
+              <Typography sx={styles.detail(theme)}>
+                {film.episode_id < 4 ? 'Prequel Trilogy' : 'Original Trilogy'}
+              </Typography>
+            </Grid>
+
             <Grid item xs={12}>
               <Button onClick={() => setCrawlOpen(!crawlOpen)}>
-                Show Crawl
+                Show Opening Crawl
               </Button>
             </Grid>
           </Grid>
