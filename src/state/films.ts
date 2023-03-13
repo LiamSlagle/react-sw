@@ -1,6 +1,16 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
+// Look into recursively converting int to roman numeral if api is expanded
+export const ROMAN_NUMS: { [key: number]: string } = {
+  1: 'I',
+  2: 'II',
+  3: 'III',
+  4: 'IV',
+  5: 'V',
+  6: 'VI',
+};
+
 export interface Film {
   episode_id: number;
   title: string;
@@ -33,9 +43,8 @@ const filmsSlice = createSlice({
 });
 
 // Destructure selectAll so we can import directly later
-export const { selectAll: selectFilms } = filmsAdapter.getSelectors<RootState>(
-  (state) => state.films,
-);
+export const { selectAll: selectFilms, selectById: selectFilmById } =
+  filmsAdapter.getSelectors<RootState>((state) => state.films);
 
 const { actions, reducer } = filmsSlice;
 export const { mergeFilms, resetFilms } = actions;
