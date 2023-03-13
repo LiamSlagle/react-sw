@@ -65,7 +65,7 @@ export default {
   }),
 
   crawlTitleEpisode: (theme: Theme) => ({
-    margin: `0 0 ${theme.spacing(8)}`,
+    margin: `0 0 ${theme.spacing(4)}`,
     textTransform: 'uppercase',
     textAlign: 'center',
     fontSize: '100%',

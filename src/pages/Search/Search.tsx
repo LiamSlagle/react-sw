@@ -54,6 +54,7 @@ const Search: React.FC = () => {
                 Search for a Star Wars film by title below
               </Typography>
             </Box>
+
             <Stack spacing={1} direction="row">
               <TextField
                 id="movie-search"
@@ -70,6 +71,7 @@ const Search: React.FC = () => {
               </Button>
             </Stack>
           </Grid>
+
           <Grid item xs={12} sm={12} md={7} sx={styles.resultsContainer(theme)}>
             {!searchFilmsLoading && films.length < 1 ? (
               <Typography>Results will appear here</Typography>

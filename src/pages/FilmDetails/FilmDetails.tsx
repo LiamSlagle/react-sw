@@ -56,30 +56,35 @@ const FilmDetails: React.FC = () => {
                 {formattedTitle(film.title, film.episode_id)}
               </Typography>
             </Grid>
+
             <Grid item xs={12} sm={3} mb={2}>
               <Typography sx={styles.detailTitle(theme)}>Released:</Typography>
               <Typography sx={styles.detail(theme)}>
                 {formattedDate(film.release_date)}
               </Typography>
             </Grid>
+
             <Grid item xs={12} sm={3} mb={2}>
               <Typography sx={styles.detailTitle(theme)}>
                 Directed by:
               </Typography>
               <Typography sx={styles.detail(theme)}>{film.director}</Typography>
             </Grid>
+
             <Grid item xs={12} sm={3} mb={2}>
               <Typography sx={styles.detailTitle(theme)}>
                 Produced by:
               </Typography>
               <Typography sx={styles.detail(theme)}>{film.producer}</Typography>
             </Grid>
+
             <Grid item xs={12}>
               <Button onClick={() => setCrawlOpen(!crawlOpen)}>
                 Show Crawl
               </Button>
             </Grid>
           </Grid>
+
           <Modal open={crawlOpen} onClose={handleCrawlClose}>
             <Paper sx={styles.crawlModal}>
               <Stack sx={styles.crawlContainer(theme)}>
