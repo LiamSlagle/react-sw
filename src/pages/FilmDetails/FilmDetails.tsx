@@ -23,7 +23,6 @@ const FilmDetails: React.FC = () => {
   const navigate = useNavigate();
 
   const [crawlOpen, setCrawlOpen] = useState<boolean>(false);
-  const handleCrawlOpen = () => setCrawlOpen(true);
   const handleCrawlClose = () => setCrawlOpen(false);
 
   const { filmId } = useParams();
