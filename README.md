@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+To run this application:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`git clone https://github.com/LiamSlagle/react-sw.git`
 
-## Available Scripts
+`npm run start`
 
-In the project directory, you can run:
+And point your browser at `localhost:3000`
 
-### `npm start`
+### Technologies used by this application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Create React App](https://github.com/facebook/create-react-app)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[TypeScript](https://www.typescriptlang.org/)
 
-### `npm test`
+[ReduxJS](https://redux.js.org/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Material UI](https://mui.com)
 
-### `npm run build`
+[React Router](https://reactrouter.com/en/main)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### My Process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+After initializing the project with Create React App and configuring my development environment to my liking, I determined that based on the requirements, the app would only need two pages, one for searching for films, and one for viewing the film details. Both of these pages can live on their own route, with the latter requiring an ID to be part of the route. From there, I started building out the UI with Material's components, and included a custom theme.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For the API consumption portion of the search page, I wrote a custom React hook which utilizes the JavaScript fetch api to grab the data. On a successful response, the hook merges the results into the films slice of state I wrote with Redux Toolkit, which handles deduping automatically.
 
-### `npm run eject`
+I decided to have the film details page select the film from the state by ID, rather than making a separate request, as I'd noticed the API had response times occasionally upwards of 5 seconds. This means that on a hard refresh, the state will be lost and the user will need to reenter their search, but prevents the user from needing to wait for a second API call to retreieve data that the app already has.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+With the architectural decisions made and the top-level functionality implemented, all that was left to do by this point is continue improving the interface, and adding nice-to-haves where I could.
